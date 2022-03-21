@@ -10,22 +10,11 @@ import com.crm.qa.base.TestBase;
 
 public class HomePage extends TestBase {
 
-	@FindBy(xpath = "//td[contains(text(),'User: Naveen K')]")
+	@FindBy(xpath = "//div[contains(text(),'New Quote')]")
 	@CacheLookup
-	WebElement userNameLabel;
+	WebElement newQuote;
 
-	@FindBy(xpath = "//a[contains(text(),'Contacts')]")
-	WebElement contactsLink;
 	
-	@FindBy(xpath = "//a[contains(text(),'New Contact')]")
-	WebElement newContactLink;
-	
-
-	@FindBy(xpath = "//a[contains(text(),'Deals')]")
-	WebElement dealsLink;
-
-	@FindBy(xpath = "//a[contains(text(),'Tasks')]")
-	WebElement tasksLink;
 
 	// Initializing the Page Objects:
 	public HomePage() {
@@ -37,29 +26,16 @@ public class HomePage extends TestBase {
 	}
 	
 	
-	public boolean verifyCorrectUserName(){
-		return userNameLabel.isDisplayed();
+	public boolean verifyHomePage(){
+		return newQuote.isDisplayed();
 	}
 	
-	public ContactsPage clickOnContactsLink(){
-		contactsLink.click();
-		return new ContactsPage();
-	}
 	
-	public DealsPage clickOnDealsLink(){
-		dealsLink.click();
-		return new DealsPage();
-	}
 	
-	public TasksPage clickOnTasksLink(){
-		tasksLink.click();
-		return new TasksPage();
-	}
-	
-	public void clickOnNewContactLink(){
-		Actions action = new Actions(driver);
-		action.moveToElement(contactsLink).build().perform();
-		newContactLink.click();
+	public NewQuotePage clickOnNewQuoteLink(){
+		
+		newQuote.click();
+		return new NewQuotePage();
 		
 	}
 	
